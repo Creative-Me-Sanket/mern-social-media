@@ -31,6 +31,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+app.use(express.static(path.join(__dirname + "/public")))
 
 /* FILE STORAGE */
 const storage = multer.diskStorage({
@@ -61,7 +62,7 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-
+    console.log("Connected To Database");
     /* ADD DATA ONE TIME */
     // User.insertMany(users);
     // Post.insertMany(posts);
